@@ -56,6 +56,21 @@ https://github.com/heygen-com/hyperframes
 
 HyperFrames is licensed under the Apache License, Version 2.0.
 
+## Usage and Safety
+
+This node is intended for local ComfyUI workflows where the person running ComfyUI also controls the local Codex authentication/runtime.
+
+Do not expose this node as a public or shared service that runs against your personal Codex session. If multiple people use this node, each user should authenticate and run Codex with their own authorized account or workspace controls.
+
+Codex can read files and run commands in the selected working directory. Use a trusted working directory, review generated files before reuse, and avoid passing private or sensitive data unless you are comfortable sharing it with the configured Codex/OpenAI service.
+
+Prompts and generated outputs must comply with OpenAI's terms and usage policies:
+
+- https://openai.com/policies/terms-of-use/
+- https://openai.com/policies/usage-policies/
+
+Do not use this node to bypass Codex limits, safeguards, or approval flows.
+
 ## Setup
 
 Install the Codex Python SDK in the same Python environment used by ComfyUI:
