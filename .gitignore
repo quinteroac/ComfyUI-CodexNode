@@ -1,0 +1,39 @@
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ComfyUI / Codex generated outputs
+codex_generated/
+codex_generated_videos/
+codex_reference_inputs/
+output/
+temp/
+tmp/
+
+# HyperFrames render artifacts
+renders/
+*.mp4
+*.webm
+*.mov
+*.mkv
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
