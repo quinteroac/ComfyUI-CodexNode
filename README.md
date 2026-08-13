@@ -2,7 +2,19 @@
 
 Custom ComfyUI node that controls a local Codex agent from ComfyUI.
 
-## Node
+The package provides three nodes for generating text prompts, images, and
+HyperFrames videos through the Codex runtime. All nodes run locally in the
+same environment as ComfyUI.
+
+## Nodes
+
+| Node | Input | Output | Purpose |
+| --- | --- | --- | --- |
+| `Codex Generate Prompt` | Text and optional `IMAGE` batch | Positive `STRING` prompt | Turn a request and visual references into a text-encoder prompt |
+| `Codex Generate Image` | Text and optional reference images | `IMAGE` batch, paths, response | Generate one or more images with Codex |
+| `Codex Generate Video` | Text and optional reference images | `VIDEO`, paths, response | Create and render a HyperFrames composition |
+
+## Codex Generate Prompt
 
 `Codex Generate Prompt`
 
@@ -12,6 +24,20 @@ Custom ComfyUI node that controls a local Codex agent from ComfyUI.
 - Output: one plain positive `STRING` prompt ready for any ComfyUI text encoder
 - The `Create skill` button opens a ComfyUI dialog and creates a new `SKILL.md` without queueing a workflow
 - When an image is connected, it is saved as PNG and attached to Codex as an actual visual input (`LocalImageInput`), not only mentioned as a file path.
+
+The node also exposes `effort`, `working_dir`, `output_dir`, and `codex_bin`
+widgets. The model and skill lists are loaded dynamically when the node is
+created. Skills are read from `.agents/skills/<skill-name>/SKILL.md`.
+
+To create a skill from ComfyUI, click `Create skill`, enter its name,
+objective, and rules, then select the generated skill in the node. Newly
+created skills are written to the local `.agents/skills` directory.
+
+The prompt node returns only the positive prompt, so it can be connected
+directly to a text encoder. When an image batch is provided, every image is
+sent to Codex as a visual reference and analyzed together.
+
+## Codex Generate Image
 
 `Codex Generate Image`
 
@@ -42,7 +68,7 @@ The `width` and `height` widgets support `gpt-image-2` popular dimensions:
 
 The node validates the selected pair against `gpt-image-2` constraints before calling Codex.
 
-`Codex Generate Video`
+## Codex Generate Video
 
 - Widget: `prompt`
 - Optional inputs: `image`, `image_2`, `image_3`, `image_4`
