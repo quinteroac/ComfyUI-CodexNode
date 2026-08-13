@@ -4,6 +4,15 @@ Custom ComfyUI node that controls a local Codex agent from ComfyUI.
 
 ## Node
 
+`Codex Generate Prompt`
+
+- Widget: `prompt`
+- Optional input: one `IMAGE` batch, analyzed as a group
+- Dynamic selectors: Codex model and one skill from `.agents/skills`
+- Output: one plain positive `STRING` prompt ready for any ComfyUI text encoder
+- The `Create skill` button opens a ComfyUI dialog and creates a new `SKILL.md` without queueing a workflow
+- When an image is connected, it is saved as PNG and attached to Codex as an actual visual input (`LocalImageInput`), not only mentioned as a file path.
+
 `Codex Generate Image`
 
 - Widget: `prompt`
